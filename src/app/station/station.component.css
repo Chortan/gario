@@ -1,0 +1,24 @@
+.hour{
+    font-size: 20px;
+
+}
+
+div.journey{
+    margin: 0px;
+}
+
+.aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.arrival{
+    font-size: 20px;
+    margin-bottom:5px;
+}
+
+.correspondence{
+    margin-top: 0px;
+}

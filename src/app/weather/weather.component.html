@@ -1,0 +1,7 @@
+<h3 class="center"><i class="fa fa-map-marker"></i> {{cityWeather.name}}</h3>
+<p class="temp center"><i class="wi wi-thermometer"></i> {{cityWeather.main.temp - 273.15 | number:'1.0-0'}}°C</p>
+<div class="main">
+    <p class="center icon"> <i class="wi wi-{{icons}}"></i></p> 
+    <p class="center">{{cityWeather.weather[0].main}} </p>
+</div>
+<p class="center humidity-pressure"><i class="fa fa-tint"></i> {{cityWeather.main.humidity}} %  -  <i class="wi wi-barometer"></i> {{cityWeather.main.pressure}} bar</p>

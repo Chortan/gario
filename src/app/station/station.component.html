@@ -1,0 +1,37 @@
+
+<div *ngIf="!process" class="row">
+
+  <h4>Départ de {{from.name}} pour {{to.name}}</h4>
+
+
+  <div *ngFor="let journey of journeys; let i=index;" class="journey row col m12 {{i%2==0 ? 'light-blue lighten-3' : 'light-blue lighten-4'}} ">
+
+    <div class="hour col m1 aligner"><p><i class="fa fa-train"></i></p></div>
+
+    <div class="hour col m1 aligner" *ngIf="journey.sections[1].from.embedded_type=='stop_point'">
+      <p class="center-full">{{convertDate(journey.sections[1].departure_date_time)[4]}}:{{convertDate(journey.sections[1].departure_date_time)[5]}}</p>
+    </div>
+
+    <div class="hour col m1 aligner" *ngIf="journey.sections[1].from.embedded_type=='stop_point'">
+      <p>{{convertDate(journey.sections[1].arrival_date_time)[4]}}:{{convertDate(journey.sections[1].arrival_date_time)[5]}}</p>
+    </div>
+    
+    
+    <div class="col m7 row">
+      <p class="col m12 arrival">{{to.name}}</p>      
+      <p class="col m12"><span *ngFor="let stopDateTime of journey.sections[1].stop_date_times; let i=index;">
+        <span *ngIf="i!=journey.sections[1].stop_date_times.length-1"><b *ngIf="i>0"> - </b>{{stopDateTime.stop_point.name}}</span>
+      </span>
+      </p>
+    </div>
+
+    <div class="col m2">
+      <p>{{journey.duration/60}} minutes</p>
+    </div>
+  </div>
+
+
+  
+</div>
+
+<button class="btn" (click)="click()">Refresh</button>

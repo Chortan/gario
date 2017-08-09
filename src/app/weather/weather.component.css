@@ -1,0 +1,25 @@
+p.temp{
+    font-size: 64px;
+    margin-top:60px;
+}
+
+p.humidity-pressure{
+    margin-top:40px;
+    font-size: 32px;
+}
+
+div.main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top:20px;
+}
+
+div.main p.icon{
+    font-size: 64px;
+}
+
+p{
+    margin:0px;
+    padding: 0px;
+}

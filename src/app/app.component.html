@@ -1,0 +1,3 @@
+<app-accueil *ngIf="serviceAvailable && !process"></app-accueil>
+
+<app-unavailable *ngIf="!serviceAvailable && !process"></app-unavailable>
