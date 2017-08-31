@@ -1,3 +1,7 @@
+div.weather{
+    min-height: 640px;
+}
+
 p.temp{
     font-size: 64px;
     margin-top:60px;
@@ -19,7 +23,37 @@ div.main p.icon{
     font-size: 64px;
 }
 
+div.main p.text{
+    font-size: 32px;
+}
+
 p{
     margin:0px;
     padding: 0px;
 }
+
+div.wind{
+    display:flex;
+    flex-direction: line;
+     align-items: center;
+     justify-content: center;
+     margin-top:50px;
+}
+
+
+div.wind div.data{
+    display:flex;
+    flex-direction: column;
+}
+
+div.wind p.wind_icon{
+    font-size:25px;
+    margin-right: 30px;
+   
+    
+}
+
+div.wind div.data{
+    font-size: 20px;
+}
+

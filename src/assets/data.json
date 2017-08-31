@@ -1,0 +1,22 @@
+{
+    "from":"Benfeld",
+    "to":"Strasbourg",
+    "trashes" : [
+        {
+            "dayWeek" : 5,
+            "evenWeeks" : true,
+            "oddWeeks":false,
+            "name" : "BAC Jaune",
+            "color" : "yellow",
+            "type" : 1
+        },
+        {
+            "dayWeek" : 2,
+            "evenWeeks" : true,
+            "oddWeeks":true,
+            "name" : "BAC Gris",
+            "color" : "grey",
+            "type" : 0
+        }
+    ]
+}

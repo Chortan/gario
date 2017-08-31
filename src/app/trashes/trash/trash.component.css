@@ -1,0 +1,21 @@
+div.trash{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div.trash p.name{
+    font-size:40px;
+}
+
+i.trash{
+    font-size: 200px;
+    animation: blink 2s 0s ease infinite;
+}
+
+@keyframes blink{
+    0%{opacity:0.2;}
+    50%{opacity:1;}
+    100%{opacity:0.2;}
+}

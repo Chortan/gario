@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CorsService {
-  corsApi = "http://127.0.0.1:8080/"
-  corsImageApi = "http://127.0.0.1:8080/images"
+  host : string = isDevMode() ? '127.0.0.1' : 'cors.roimarmier.xyz';
+  port : number = isDevMode() ? 8080 : 80;
+  corsApi = "http://"+this.host+":"+this.port+"/";
+  corsImageApi = this.corsApi+ "images"
 
   constructor(private http:Http) { }
 
@@ -18,7 +20,21 @@ export class CorsService {
     return res.status>=200;
   }
 
+  extractDataJson(res:Response):Data{
+     if (res.status < 200 || res.status >= 400) {
+        throw new Error('Bad response status: ' + res.status);
+        }
+        let body = res.json();
+        return body ;
+  }
+
+  getData() : Observable<Data>{
+  return this.http.get("/assets/data.json").map(this.extractDataJson);
 }
+
+}
+
+
 
 
 export class RequestCORS{
@@ -30,4 +46,19 @@ export class RequestCORS{
         this.apikey = apikey;
     }
   
+}
+
+export class Data{
+  from:string;
+  to:string;
+  trashes : Trash[] =[]; 
+}
+
+export class Trash{
+  dayWeek : number;
+  evenWeeks : boolean;
+  oddWeeks : boolean;
+  name : string;
+  color : string;
+  type : number;
 }

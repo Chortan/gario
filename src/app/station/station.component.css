@@ -3,6 +3,18 @@
 
 }
 
+div.date_arrive{
+    font-size: 15px;
+    padding-top:0px;
+    align-items: center;
+
+}
+
+div.date_depart{
+    font-size: 20px;
+    align-items: center;
+}
+
 div.journey{
     margin: 0px;
 }
@@ -14,9 +26,34 @@ div.journey{
   padding-top: 20px;
 }
 
+.commercial_info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top:20px;
+    height:100%;
+}
+
+.commercial_info p{
+    margin:0px;
+    padding:0px;
+
+}
+
+.commercial_info p.numero{
+    font-size:12px;
+
+}
+
 .arrival{
     font-size: 20px;
     margin-bottom:5px;
+}
+
+div.arrival_container{
+    display: flex;
+    flex-direction: line;
 }
 
 .correspondence{

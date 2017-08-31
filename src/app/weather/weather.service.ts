@@ -6,14 +6,17 @@ import 'rxjs/add/operator/map';
 
 import { CityWeather } from "./weather";
 import { RequestCORS } from "../cors-api";
+import { CorsService } from "../cors.service";
 
 @Injectable()
 export class WeatherService {
-  private corsUrl : string = "http://127.0.0.1:8080"
+  private corsUrl : string;
   private apikey : string = "5d31621c9bda6b0627e940db30f9c5a8";
 
   private cityWeatherUrl : string = "http://api.openweathermap.org/data/2.5/weather"
-  constructor(private http:Http) { }
+  constructor(private http:Http, private cors:CorsService) {
+    this.corsUrl = this.cors.corsApi;
+   }
 
   getWeather(city:string) : Observable<CityWeather>{
     let cors:RequestCORS = new RequestCORS(this.cityWeatherUrl+"?q=" + city + ",fr&appid="+this.apikey,"");

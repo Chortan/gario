@@ -1,0 +1,54 @@
+div.loader div.bottom div, div.loader div.top div{
+    position: relative;
+    width:50px;
+    height:50px;
+    display:inline-block;
+    margin: 3px;
+    align-items: center;
+    box-shadow: 3px 0px 0px #C8C8C8;
+}
+
+div.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height:100%;
+    width:100%;
+    position: relative;
+    top:calc(50px * 4 + 9px);
+    
+}
+
+div.loader div.bottom, div.loader div.top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+div.loader div.top div.gauche{
+    animation: blink 1s 0s ease infinite;
+}
+
+div.loader div.top div.droite{
+    animation: blink 1s 250ms ease infinite;
+}
+
+div.loader div.bottom div.gauche{
+    animation: blink 1s 750ms ease infinite;    
+}
+
+div.loader div.bottom div.droite{
+    animation: blink 1s 500ms ease infinite;
+    
+}
+
+
+
+@keyframes blink{
+    0%{opacity: 0;}
+    50%{opacity: 1;}
+    100%{opacity: 0;}
+}

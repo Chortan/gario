@@ -9,3 +9,19 @@ html,body{
     margin:0;
     padding:0;
 }
+
+
+h2.loader{
+    animation: rotate 2s 0s ease infinite;
+    height: 100%;
+      flex-direction: column;
+	display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes rotate{
+    0%{transform: rotate(90deg);}
+    100%{transform: rotate(450deg);}
+
+}

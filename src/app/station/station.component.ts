@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SncfService } from "./sncf.service";
+import { Data,CorsService } from "../cors.service";
 import { Sncf, StopArea, Place,Link,Journey } from "./station";
 
 
@@ -13,21 +14,24 @@ export class StationComponent implements OnInit {
   from: StopArea = new StopArea();
   to: StopArea = new StopArea();
 
-  journeys:Journey[] = [new Journey()];
+  journeys:Journey[] = [];
 
   fromRequested:boolean = false;
   toRequested:boolean = false;
 
   process:boolean=true;
   
-  constructor(private sncf:SncfService) { }
+  constructor(private sncf:SncfService, private cors:CorsService) { }
 
   ngOnInit() {
-    this.from.name="Benfeld";
-    this.to.name="Strasbourg-Strasbourg";
-    this.getGare();
+    this.cors.getData().subscribe(data=>{
+      this.from.name=data.from;
+      this.to.name=data.to;
+      this.getGare();
 
-    let truc:any[];
+      let truc:any[];
+    })
+    
 
     
     
@@ -41,7 +45,6 @@ export class StationComponent implements OnInit {
 
   getTravel(nb_travel:number){
     let timestamp =  new Date().getTime() + (3600*7);
-    console.log("now:"+new Date().getTime()+" +7h = "+timestamp);
     this.sncf.getTravel(this.from,this.to,nb_travel,this.getDateTime(Date.now())).subscribe((event:Sncf)=>{
       
       if(event.journeys.length >= 1){
@@ -56,6 +59,7 @@ export class StationComponent implements OnInit {
   }
 
   click(){
+    this.process = true;
     this.getTravel(15);
   }
 
@@ -68,11 +72,11 @@ export class StationComponent implements OnInit {
     let minutes:string = d.getMinutes()<10 ? "0"+d.getMinutes() : d.getMinutes()+"";
     let secondes:string = d.getSeconds()<10 ? "0"+d.getSeconds() : d.getSeconds()+"";
     let timeSncfFormat:string=year+mounth+day+"T"+hours+minutes+secondes;
-    console.log(timeSncfFormat)
     return timeSncfFormat;
   }
 
   getGare(){
+    
     let places:Place[];
     this.sncf.getStation(this.from.name).subscribe(sncf => {
       places = sncf.places;
